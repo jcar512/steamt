@@ -8,7 +8,5 @@
     },
     "author": "jcar512",
     "license": "ISC",
-    "devDependencies": {
-        "tailwindcss": "^3.4.3"
-    }
+    "devDependencies": {}
 }
