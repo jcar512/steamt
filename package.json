@@ -1,0 +1,14 @@
+{
+    "name": "entregable",
+    "version": "1.0.0",
+    "description": "Entregable grupal",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "jcar512",
+    "license": "ISC",
+    "devDependencies": {
+        "tailwindcss": "^3.4.3"
+    }
+}
