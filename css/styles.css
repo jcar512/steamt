@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #c6d4df;
+    background-size: 100% 100%;
+    background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+    background-image: radial-gradient(
+            49% 81% at 45% 47%,
+            #1b2838 0%,
+            #073aff00 95%
+        ),
+        radial-gradient(113% 91% at 17% -2%, #2a475e 23%, #ff000000 99%),
+        radial-gradient(142% 91% at 83% 7%, #1b2838 1%, #2a475eff 99%),
+        radial-gradient(142% 91% at -6% 74%, #66c0f4 1%, #1b2838ff 97%),
+        radial-gradient(142% 91% at 111% 84%, #c7d5e0ff 2%, #171a21ff 100%);
+}
+
+html {
+    height: 100%;
+}
