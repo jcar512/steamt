@@ -1,43 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Steam't</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/styles.css" />
-  <title>Steam't</title>
-</head>
+  <body>
+    <header>
+      <nav
+        class="flex fixed bg-slate-900 top-0 left-0 w-full justify-between items-center h-20"
+      >
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold mx-6">STEAM'T</h1>
+          <ul class="flex space-x-4">
+            <li><a href="#">Inicio </a></li>
+            <li><a href="#">Categorias</a></li>
+            <li><a href="#">Crud</a></li>
+          </ul>
+        </div>
+        <div class="flex mx-6 space-x-4">
+          <input
+            class="px-2 bg-sky-800 text-slate-300 placeholder:text-slate-800 border-2 rounded border-slate-500"
+            type="search"
+            placeholder="Buscar"
+          />
+          <a href="#"><img src="images/shopping-cart.svg" alt="cart-img" /></a>
+          <button>
+            <img src="images/user.svg" alt="user-img" />
+          </button>
+        </div>
+      </nav>
+    </header>
 
-<body>
-  <header>
-    <nav class="flex fixed bg-slate-900 top-0 left-0 w-full justify-between items-center h-20">
-      <div class="flex items-center">
-        <h1 class="text-2xl font-bold mx-6">STEAM'T</h1>
-        <ul class="flex space-x-4">
-          <li><a href="#">Inicio </a></li>
-          <li><a href="#">Categorias</a></li>
-          <li><a href="#">Crud</a></li>
-        </ul>
-      </div>
-      <div class="flex mx-6 space-x-4">
-        <input class="px-2 bg-sky-800 text-slate-300 placeholder:text-slate-800 border-2 rounded border-slate-500"
-          type="search" placeholder="Buscar" />
-        <a href="#"><img src="images/shopping-cart.svg" alt="cart-img" /></a>
-        <button><img src="images/user.svg" alt="user-img"></button>
-      </div>
-    </nav>
-  </header>
+    <main></main>
 
-  <main></main>
-
-  <footer>
-    <div class="flex absolute bg-slate-900 bottom-0 left-0 w-full mb-8 h-20">
+    <footer>
+      <div class="flex absolute bg-slate-900 bottom-0 left-0 w-full mb-8 h-20">
         <span class="m-auto">© 2024 CTC</span>
-    </div>
-  </footer>
+      </div>
+    </footer>
 
-  <script src="js/script.js"></script>
-</body>
-
+    <script src="js/script.js"></script>
+  </body>
 </html>
