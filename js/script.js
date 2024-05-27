@@ -247,23 +247,31 @@ const cardsArray = [
   },
 ];
 
-function createCard(id, img) {
-  const div = document.createElement("div"); //creo un div por cada loop
-  cardContainer.appendChild(div); //meto el div recien creado dentro del cardContainer
-  div.id = id; // le asigno una id a ese div
+function createCard(id, title, img) {
+  const card = document.createElement("div"); //creo un div por cada loop
+  cardContainer.appendChild(card); //meto el div recien creado dentro del cardContainer
+  card.id = id; // le asigno una id a ese div
+  card.classList = 'hover:cursor-pointer';
 
   const image = document.createElement("img");
-  div.appendChild(image); //meto el img recien creado dentro del div recien creado
+  card.appendChild(image); //meto el img recien creado dentro del div recien creado
   image.src = img; //creo un img y le paso la ruta de la imagen del elemento actual
   image.alt = "image";
+
+  const infoContainer = document.createElement("div");
+  card.appendChild(infoContainer);
+
+  const gameTitle = document.createElement("h3");
+  infoContainer.appendChild(gameTitle);
+  gameTitle.innerText = title;
 }
 
 //uso {id, title, description, price, categories, img} en lugar de ===> (elemento) elemento.id, elemento.img, etc...
 //para hacerlo mas intuitivo, se le llama destructurar
 const cardsList = cardsArray.forEach(
-  ({ id, title, description, price, categories, img }) => createCard(id, img),
+  ({ id, title, description, price, categories, img }) => createCard(id, title, img),
 ); //uso forEach para loopear a traves de cardsArray
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   cardsList;
 });
