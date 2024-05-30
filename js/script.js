@@ -1,6 +1,7 @@
 const cardContainer = document.querySelector("#cardContainer");
+const searchInput = document.querySelector("#searchInput");
 
-const cardsArray = [
+const gameList = [
   {
     id: 1,
     title: "Batman™: Arkham Origins",
@@ -58,7 +59,7 @@ const cardsArray = [
     electrodomésticos y disfruta de tu viaje por carretera generado \
     procedimentalmente en esta experiencia roguelite.",
     price: 369,
-    categories: ["Acción", "Casual", "Indie", "Simuladores", "Estrategia"],
+    categories: ["Casual", "Indie", "Simuladores", "Estrategia"],
     img: "images/game_cover/coffee-caravan.jpg",
   },
   {
@@ -247,7 +248,7 @@ const cardsArray = [
   },
 ];
 
-function createCard(id, title, img) {
+function createCard(id, title, description, price, categories, img) {
   const card = document.createElement("div"); //creo un div por cada loop
   cardContainer.appendChild(card); //meto el div recien creado dentro del cardContainer
   card.id = id; // le asigno una id a ese div
@@ -260,18 +261,59 @@ function createCard(id, title, img) {
 
   const infoContainer = document.createElement("div");
   card.appendChild(infoContainer);
+  infoContainer.classList = "flex flex-col justify-between"
+
+  const topDiv = document.createElement("div")
+  infoContainer.appendChild(topDiv);
 
   const gameTitle = document.createElement("h3");
-  infoContainer.appendChild(gameTitle);
+  topDiv.appendChild(gameTitle);
+  gameTitle.classList = "text-2xl font-bold";
   gameTitle.innerText = title;
+
+  const gameDescription = document.createElement("p");
+  topDiv.appendChild(gameDescription);
+  gameDescription.innerText = description;
+
+  const bottomDiv = document.createElement("div");
+  infoContainer.appendChild(bottomDiv);
+
+  const gameCategories = document.createElement("p");
+  bottomDiv.appendChild(gameCategories);
+  gameCategories.innerText = `Género: ${categories.join(", ")}`;
+
+  const gamePrice = document.createElement("p");
+  bottomDiv.appendChild(gamePrice);
+  gamePrice.innerText = `Precio: UYU$${price}`;
 }
 
-//uso {id, title, description, price, categories, img} en lugar de ===> (elemento) elemento.id, elemento.img, etc...
-//para hacerlo mas intuitivo, se le llama destructurar
-const cardsList = cardsArray.forEach(
-  ({ id, title, description, price, categories, img }) => createCard(id, title, img),
-); //uso forEach para loopear a traves de cardsArray
+function loadCards(list) {
+  //uso {id, title, description, price, categories, img} en lugar de ===> (elemento) elemento.id, elemento.img, etc...
+  //para hacerlo mas intuitivo, se le llama destructurar
+  const cardsList = list.forEach(
+    ({ id, title, description, price, categories, img }) =>
+      createCard(id, title, description, price, categories, img),
+  ); //uso forEach para loopear a traves de gameList
+
+  return cardsList;
+};
+
+function searchByName(name) {
+  const newGameList = gameList.filter((game) =>
+    game.title.toLowerCase().includes(name)
+  );
+
+  cardContainer.replaceChildren();
+
+  loadCards(newGameList);
+}
 
 document.addEventListener("DOMContentLoaded", function() {
-  cardsList;
+  loadCards(gameList);
+
+  searchInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      searchByName(searchInput.value);
+    }
+  });
 });
