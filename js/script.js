@@ -252,55 +252,70 @@ function createCard(id, title, description, price, categories, img) {
   const card = document.createElement("div"); //creo un div por cada loop
   cardContainer.appendChild(card); //meto el div recien creado dentro del cardContainer
   card.id = id; // le asigno una id a ese div
-  card.classList = 'hover:cursor-pointer';
+  card.classList = "max-w-96 shadow-2xl rounded-md hover:cursor-pointer";
 
   const image = document.createElement("img");
   card.appendChild(image); //meto el img recien creado dentro del div recien creado
   image.src = img; //creo un img y le paso la ruta de la imagen del elemento actual
   image.alt = "image";
+  image.classList = "rounded-t-md";
 
   const infoContainer = document.createElement("div");
   card.appendChild(infoContainer);
-  infoContainer.classList = "flex flex-col justify-between"
-
-  const topDiv = document.createElement("div")
-  infoContainer.appendChild(topDiv);
+  infoContainer.classList = "flex flex-col justify-between p-2";
 
   const gameTitle = document.createElement("h3");
-  topDiv.appendChild(gameTitle);
-  gameTitle.classList = "text-2xl font-bold";
+  infoContainer.appendChild(gameTitle);
+  gameTitle.classList = "text-2xl xl:h-16 lg:h-24 h-16 mb-2";
   gameTitle.innerText = title;
 
+  const gamePrice = document.createElement("p");
+  infoContainer.appendChild(gamePrice);
+  gamePrice.classList = "";
+  gamePrice.innerText = `UYU ${price}`;
+
+  /* ------------- Modal ------------- */
+
+  const modal = document.createElement("div");
+  cardContainer.appendChild(modal);
+  modal.id = "modal";
+  modal.classList = "hidden fixed top-0 left-0 z-10 w-full h-full";
+
+  card.addEventListener("click", function () {
+    /*  Hago que se muestre el modal al hacer click en cada card cambiando 
+    el display de none a flex  */
+    modal.style.display = "flex";
+  });
+
+  const descriptionContainer = document.createElement("div");
+  modal.appendChild(descriptionContainer);
+  descriptionContainer.classList =
+    "m-auto max-w-96 max-h-96 p-8 bg-slate-800 rounded-md";
+
   const gameDescription = document.createElement("p");
-  topDiv.appendChild(gameDescription);
+  descriptionContainer.appendChild(gameDescription);
+  gameDescription.classList = "text-base";
   gameDescription.innerText = description;
 
-  const bottomDiv = document.createElement("div");
-  infoContainer.appendChild(bottomDiv);
-
   const gameCategories = document.createElement("p");
-  bottomDiv.appendChild(gameCategories);
+  descriptionContainer.appendChild(gameCategories);
+  gameCategories.classList = "text-base font-bold mt-5";
   gameCategories.innerText = `Género: ${categories.join(", ")}`;
-
-  const gamePrice = document.createElement("p");
-  bottomDiv.appendChild(gamePrice);
-  gamePrice.innerText = `Precio: UYU$${price}`;
 }
 
 function loadCards(list) {
+  const orderedList = list.sort((a, b) => a.title.localeCompare(b.title));
+
   //uso {id, title, description, price, categories, img} en lugar de ===> (elemento) elemento.id, elemento.img, etc...
   //para hacerlo mas intuitivo, se le llama destructurar
-  const cardsList = list.forEach(
-    ({ id, title, description, price, categories, img }) =>
-      createCard(id, title, description, price, categories, img),
+  orderedList.forEach(({ id, title, description, price, categories, img }) =>
+    createCard(id, title, description, price, categories, img),
   ); //uso forEach para loopear a traves de gameList
-
-  return cardsList;
-};
+}
 
 function searchByName(name) {
   const newGameList = gameList.filter((game) =>
-    game.title.toLowerCase().includes(name)
+    game.title.toLowerCase().includes(name),
   );
 
   cardContainer.replaceChildren();
@@ -308,12 +323,17 @@ function searchByName(name) {
   loadCards(newGameList);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   loadCards(gameList);
 
-  searchInput.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-      searchByName(searchInput.value);
+  window.addEventListener("click", function (event) {
+    //Si se hace click fuera del modal se cierra
+    if (event.target.id === "modal") {
+      event.target.style.display = "none";
     }
+  });
+
+  searchInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") searchByName(searchInput.value);
   });
 });
