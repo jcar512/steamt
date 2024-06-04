@@ -1,5 +1,7 @@
 const cardContainer = document.querySelector("#cardContainer");
 const searchInput = document.querySelector("#searchInput");
+const cartBtn = document.querySelector("#cartBtn");
+const cart = document.querySelector("#cart");
 
 const gameList = [
   {
@@ -269,17 +271,30 @@ function createCard(id, title, description, price, categories, img) {
   gameTitle.classList = "text-2xl xl:h-16 lg:h-24 h-16 mb-2";
   gameTitle.innerText = title;
 
+  const priceContainer = document.createElement("div");
+  infoContainer.appendChild(priceContainer);
+  priceContainer.classList = "flex justify-between items-center";
+
   const gamePrice = document.createElement("p");
-  infoContainer.appendChild(gamePrice);
-  gamePrice.classList = "";
+  priceContainer.appendChild(gamePrice);
   gamePrice.innerText = `UYU ${price}`;
+
+  const buyButton = document.createElement("button");
+  priceContainer.appendChild(buyButton);
+  buyButton.classList =
+    "bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500";
+
+  const cartIcon = document.createElement("img");
+  buyButton.appendChild(cartIcon);
+  cartIcon.src = "images/icons/shopping-cart.svg";
 
   /* ------------- Modal ------------- */
 
   const modal = document.createElement("div");
   cardContainer.appendChild(modal);
-  modal.id = "modal";
-  modal.classList = "hidden fixed top-0 left-0 z-10 w-full h-full";
+  modal.id = `modal${id}`;
+  modal.classList =
+    "hidden backdrop-opacity-20 backdrop-invert fixed top-0 left-0 z-10 w-full h-full";
 
   card.addEventListener("click", function () {
     /*  Hago que se muestre el modal al hacer click en cada card cambiando 
@@ -287,19 +302,28 @@ function createCard(id, title, description, price, categories, img) {
     modal.style.display = "flex";
   });
 
+  const modalCard = document.createElement("div");
+  modal.appendChild(modalCard);
+  modalCard.classList = "m-auto max-w-96 shadow-2xl bg-slate-900 rounded-md";
+
+  const descriptionImage = document.createElement("img");
+  modalCard.appendChild(descriptionImage);
+  descriptionImage.src = img;
+  descriptionImage.alt = "descriptionImage";
+  descriptionImage.classList = "rounded-t-md";
+
   const descriptionContainer = document.createElement("div");
-  modal.appendChild(descriptionContainer);
-  descriptionContainer.classList =
-    "m-auto max-w-96 max-h-96 p-8 bg-slate-800 rounded-md";
+  modalCard.appendChild(descriptionContainer);
+  descriptionContainer.classList = "p-8";
 
   const gameDescription = document.createElement("p");
   descriptionContainer.appendChild(gameDescription);
-  gameDescription.classList = "text-base";
+  gameDescription.classList = "text-lg";
   gameDescription.innerText = description;
 
   const gameCategories = document.createElement("p");
   descriptionContainer.appendChild(gameCategories);
-  gameCategories.classList = "text-base font-bold mt-5";
+  gameCategories.classList = "text-lg font-bold mt-5";
   gameCategories.innerText = `Género: ${categories.join(", ")}`;
 }
 
@@ -326,9 +350,14 @@ function searchByName(name) {
 document.addEventListener("DOMContentLoaded", function () {
   loadCards(gameList);
 
+  cartBtn.addEventListener("click", function () {
+    //Abre el carrito
+    cart.style.display = "flex";
+  });
+
   window.addEventListener("click", function (event) {
     //Si se hace click fuera del modal se cierra
-    if (event.target.id === "modal") {
+    if (event.target.id.includes("modal") || event.target.id === "cart") {
       event.target.style.display = "none";
     }
   });
