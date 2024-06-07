@@ -1,58 +1,73 @@
 <!-- prettier-ignore -->
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Steam't</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/styles.css" />
-  <title>Steam't</title>
-</head>
+  <body class="text-lg">
+    <header>
+      <nav
+        class="flex fixed z-50 bg-slate-900 top-0 left-0 w-full justify-between items-center h-20 ease-in-out duration-300"
+      >
+        <div class="flex items-center">
+          <h1 class="text-3xl font-bold mx-6">STEAM'T</h1>
+          <ul class="flex space-x-4">
+            <li><a class="font-bold underline" href="#">Inicio </a></li>
+            <li><a class="font-bold" href="./pages/crud.html">Crud</a></li>
+            <li>
+              <a class="font-bold" href="./pages/estadisticas.html"
+                >Estadisticas</a
+              >
+            </li>
+            <li>
+              <a class="font-bold" href="#">Categorias</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex mx-6 space-x-4 items-center">
+          <input
+            id="searchInput"
+            class="px-2 bg-sky-800 text-slate-300 placeholder:text-slate-800 border-2 rounded border-slate-500"
+            type="text"
+            placeholder="Buscar"
+          />
+          <a href="#" id="cartBtn"
+            ><img src="images/icons/shopping-cart.svg" alt="cart-img"
+          /></a>
+          <button>
+            <img src="images/icons/user.svg" alt="user-img" />
+          </button>
+        </div>
+      </nav>
+    </header>
 
-<body class="text-lg">
-  <header>
-    <nav
-      class="flex fixed z-50 bg-slate-900 top-0 left-0 w-full justify-between items-center h-20 ease-in-out duration-300">
-      <div class="flex items-center">
-        <h1 class="text-3xl font-bold mx-6">STEAM'T</h1>
-        <ul class="flex space-x-4">
-          <li><a class="font-bold underline" href="#">Inicio </a></li>
-          <li><a class="font-bold" href="./pages/crud.html">Crud</a></li>
-          <li>
-            <a class="font-bold" href="./pages/estadisticas.html">Estadisticas</a>
-          </li>
-          <li>
-            <a class="font-bold" href="#">Categorias</a>
-          </li>
-        </ul>
+    <main class="md:w-4/5 mx-auto mt-32">
+      <div
+        id="cardContainer"
+        class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-12 justify-center"
+      >
+        <!-- Cards -->
       </div>
-      <div class="flex mx-6 space-x-4 items-center">
-        <input id="searchInput"
-          class="px-2 bg-sky-800 text-slate-300 placeholder:text-slate-800 border-2 rounded border-slate-500"
-          type="text" placeholder="Buscar" />
-        <a href="#" id="cartBtn"><img src="images/icons/shopping-cart.svg" alt="cart-img" /></a>
-        <button>
-          <img src="images/icons/user.svg" alt="user-img" />
-        </button>
-      </div>
-    </nav>
-  </header>
 
-  <main class="md:w-4/5 mx-auto mt-32">
-    <div id="cardContainer" class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-12 justify-center">
-      <!-- <div class=""></div> -->
-    </div>
-    <div id="cart" class="block backdrop-opacity-20 backdrop-invert fixed top-0 left-0 z-10 w-full h-full">
-      <div class="flex mx-auto mt-32 mb-auto w-3/4 h-3/4 ">
-        <div class="w-4/6 mr-8">
-          <div class="bg-slate-900 p-4 rounded-md shadow-2xl">
-            <div class="flex justify-between">
+      <div
+        id="cart"
+        class="hidden backdrop-opacity-20 backdrop-invert fixed top-0 left-0 z-10 w-full h-full"
+      >
+        <div class="flex mx-auto mt-32 mb-auto w-3/4 h-3/4">
+          <div id="cartCardContainer" class="w-4/6 mr-8">
+            <!-- CartCards -->
+
+            <!-- <div class="bg-slate-900 p-4 rounded-md shadow-2xl flex justify-between">
               <div class="flex space-x-4">
                 <img class="max-h-36 rounded-md" src="images/game_cover/duck-detective.jpg" alt="duck-detective">
-                <div>
+                
                   <h3 class="text-2xl">Duck Detective</h3>
-                </div>
+                
               </div>
               <div class="flex flex-col place-self-end">
                 <p class="text-xl">UYU 400</p>
@@ -61,31 +76,35 @@
                   <img src="images/icons/trash-2.svg" alt="trashIcon">
                 </button>
               </div>
-            </div>
+          </div> -->
           </div>
-        </div>
-        <div class="w-2/6">
-          <div class="bg-slate-900 rounded-md p-4">
-            <div class="flex justify-between mb-20">
-              <p>Total estimado:</p>
-              <p class="text-xl font-bold">UYU 400</p>
-            </div>
-            <div>
-              <button class="w-full font-bold bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500"
-                id="confirmPurchaseButton" type="button">Finalizar compra</button>
+          <div class="w-2/6">
+            <div class="bg-slate-900 rounded-md p-4">
+              <div class="flex justify-between mb-20">
+                <p>Total estimado:</p>
+                <p class="text-xl font-bold">UYU 400</p>
+              </div>
+              <div>
+                <button
+                  class="w-full font-bold bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500"
+                  id="confirmPurchaseButton"
+                  type="button"
+                >
+                  Finalizar compra
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-  </main>
+    </main>
 
-  <footer>
-    <div class="flex sticky bottom-0 bg-slate-900 w-full h-20 mt-10">
-      <span class="m-auto">© 2024 CTC</span>
-    </div>
-  </footer>
+    <footer>
+      <div class="flex sticky bottom-0 bg-slate-900 w-full h-20 mt-10">
+        <span class="m-auto">© 2024 CTC</span>
+      </div>
+    </footer>
 
-  <script type="module" src="js/index.js"></script>
-</body>
-
+    <script type="module" src="js/index.js"></script>
+  </body>
 </html>
