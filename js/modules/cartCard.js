@@ -1,4 +1,4 @@
-import { Card } from "./card";
+import { Card } from "./card.js";
 
 export class CartCard extends Card {
   createCartCard() {
@@ -6,7 +6,7 @@ export class CartCard extends Card {
     const card = document.createElement("div");
     this.cardContainer.appendChild(card);
     card.id = `cartCard${this.id}`;
-    card.classList = "bg-slate-900 p-4 rounded-md shadow-2xl";
+    card.classList = "flex justify-between bg-slate-900 p-4 rounded-md shadow-2xl";
 
     /* --- Div para imagen y titulo del juego --- */
     const leftContainer = document.createElement("div");
@@ -23,7 +23,7 @@ export class CartCard extends Card {
     /* --- Titulo --- */
     const title = document.createElement("h3");
     leftContainer.appendChild(title);
-    title.classList = "text-2xl";
+    title.classList = "text-xl";
     title.innerHTML = this.title;
 
     /* --- Div para precio y boton de eliminar --- */
@@ -34,8 +34,8 @@ export class CartCard extends Card {
     /* --- Precio del juego --- */
     const gamePrice = document.createElement("p");
     rightContainer.appendChild(gamePrice);
-    gamePrice.classList = "text-xl";
-    gamePrice.innerText = this.price;
+    gamePrice.classList = "text-lg min-w-24";
+    gamePrice.innerText = `UYU ${this.price}`;
 
     /* --- Boton eliminar --- */
     const deleteCartItem = document.createElement("button");

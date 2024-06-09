@@ -1,4 +1,4 @@
-export const gameList = [
+export const defaultGameList = [
   {
     id: 1,
     title: "Batman™: Arkham Origins",
