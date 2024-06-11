@@ -1,3 +1,5 @@
+import { Alert } from "./alert.js";
+
 export class Card {
   id;
   cardContainer;
@@ -85,9 +87,21 @@ export class Card {
 
       const itemAlreadyInCart = cartItems.find((item) => item.id === game.id);
 
-      itemAlreadyInCart ? console.log("already in cart") : cartItems.push(game);
+      if (itemAlreadyInCart) {
+        console.log("already in cart");
+        const alertModal = new Alert("El juego ya se encuenta en el carrito", "secondary");
+        alertModal.setAlertBgColor();
+        //alertModal.showAlert();
+        alertModal.removeAlert();
+      } else {
+        cartItems.push(game);
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-      localStorage.setItem("cartItems", JSON.stringify(cartItems))
+        const alertModal = new Alert("El juego ha sido agregado al carrito", "primary");
+        //alertModal.showAlert();
+        alertModal.setAlertBgColor();
+        alertModal.removeAlert();
+      }
     });
 
     /* ---Icono para boton de agregar al carrito */
