@@ -73,11 +73,11 @@ export class Card {
     /* --- Boton para agregar al carrito --- */
     const buyButton = document.createElement("button");
     buttonsContainer.appendChild(buyButton);
-    buyButton.id = `addGame${this.id}`
+    buyButton.id = `addGame${this.id}`;
     buyButton.classList =
       "relative bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500";
 
-    buyButton.addEventListener("click", function() {
+    buyButton.addEventListener("click", function () {
       //Agregar datos de juego a local storage, en caso de que se encuentre el id no se realiza la accion
       const gameList = JSON.parse(localStorage.getItem("gameList"));
 
@@ -89,16 +89,20 @@ export class Card {
 
       if (itemAlreadyInCart) {
         console.log("already in cart");
-        const alertModal = new Alert("El juego ya se encuenta en el carrito", "secondary");
+        const alertModal = new Alert(
+          "El juego ya se encuenta en el carrito",
+          "secondary",
+        );
         alertModal.setAlertBgColor();
-        //alertModal.showAlert();
         alertModal.removeAlert();
       } else {
         cartItems.push(game);
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-        const alertModal = new Alert("El juego ha sido agregado al carrito", "primary");
-        //alertModal.showAlert();
+        const alertModal = new Alert(
+          "El juego ha sido agregado al carrito",
+          "primary",
+        );
         alertModal.setAlertBgColor();
         alertModal.removeAlert();
       }
@@ -124,7 +128,7 @@ export class Card {
       "hidden backdrop-opacity-20 backdrop-invert fixed top-0 left-0 z-10 w-full h-full";
 
     /*----Mostrar modal----*/
-    infoButton.addEventListener("click", function() {
+    infoButton.addEventListener("click", function () {
       /*  Hago que se muestre el modal al hacer click en cada infoButton cambiando
       el display de none a flex  */
       modal.style.display = "flex";

@@ -17,19 +17,14 @@ export class Alert {
   }
 
   setAlertBgColor() {
-    this.bgColor === "primary" ?
-      this.alertModal.classList.add("bg-green-600") :
-      this.alertModal.classList.add("bg-red-600");
+    this.bgColor === "primary"
+      ? this.alertModal.classList.add("bg-green-600")
+      : this.alertModal.classList.add("bg-red-600");
   }
-
-  // showAlert() {
-  //   this.alertModal.style.display = "block"
-  // }
 
   removeAlert() {
     setTimeout(() => {
       this.alertModal.remove();
-    },
-      2000);
+    }, 2000);
   }
 }
