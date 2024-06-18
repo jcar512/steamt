@@ -43,9 +43,36 @@
     </header>
 
     <main class="w-4/5 mx-auto mt-32">
-      <div class="">
-        <p>Work in progress</p>
-        <img src="../images/gifs/b2c0529772ff6f5f713da4799c2bf330.gif" alt="" />
+      <div class="flex">
+        <div class="flex w-1/2 py-8">
+          <form
+            id="crudForm"
+            class="flex flex-col space-y-4 w-4/6 mx-auto items-center p-4 border-2 border-slate-800 rounded-md shadow-2xl"
+          >
+            <p>Imagen</p>
+            <input type="file" name="gameImg" id="gameImg" />
+            <p>Título</p>
+            <input class="text-black" type="text" name="title" id="title" />
+            <p>Descripción</p>
+            <textarea
+              class="text-black w-5/6 h-96 p-2"
+              name="description"
+              id="description"
+              maxlength="342"
+            ></textarea>
+            <p>Precio</p>
+            <input class="text-black" type="text" name="price" id="price" />
+            <p>Categorías</p>
+            <textarea
+              class="text-black w-5/6 h-36 p-2"
+              name="categories"
+              id="categories"
+              maxlength="298"
+            ></textarea>
+            <input type="submit" />
+          </form>
+        </div>
+        <div class="w-1/2 border">Preview</div>
       </div>
     </main>
 
@@ -55,6 +82,6 @@
       </div>
     </footer>
 
-    <script src="/js/crud.js"></script>
+    <script type="module" src="/js/crud.js"></script>
   </body>
 </html>
