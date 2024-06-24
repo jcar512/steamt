@@ -14,13 +14,11 @@ const cartBtn = document.querySelector("#cartBtn");
 const cartModal = document.querySelector("#cartModal");
 
 document.addEventListener("DOMContentLoaded", function () {
-  let gameList;
+  let gameList = JSON.parse(localStorage.getItem("gameList")) || [];
 
-  if (JSON.parse(localStorage.getItem("gameList"))) {
-    gameList = JSON.parse(localStorage.getItem("gameList"));
-  } else {
+  if (gameList.length === 0) {
     gameList = defaultGameList;
-    localStorage.setItem("gameList", JSON.stringify(defaultGameList));
+    localStorage.set("gameList", JSON.stringify(gameList));
   }
 
   loadCards(gameList, cardContainer, Card);
