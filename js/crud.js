@@ -23,14 +23,14 @@ function addNewGame(gameList) {
     .split("\n")
     .filter((line) => line); //https://stackoverflow.com/a/59897290
 
-  console.log(formData.get("gameImg"));
+  const img = formData.get("gameImg");
 
   const fileReader = new FileReader();
 
-  fileReader.readAsDataURL(formData.get("gameImg"));
+  fileReader.readAsDataURL(img);
 
   fileReader.addEventListener("load", function () {
-    const url = fileReader.result;
+    const imgURL = fileReader.result;
 
     const game = {
       id: gameId,
@@ -38,18 +38,20 @@ function addNewGame(gameList) {
       description: formData.get("description"),
       price: parseInt(formData.get("price")),
       categories: lines,
-      img: url,
+      img: imgURL,
     };
 
     gameList.push(game);
 
     localStorage.setItem("gameList", JSON.stringify(gameList));
-
-    console.log(gameList);
   });
 }
 
 function modifyGame(gameList) {
+  const gameBefore = gameList.find(
+    (game) => game.id === parseInt(gameIdModify.value),
+  );
+
   const formData = new FormData(crudFormModify);
 
   const area = formData.get("categories");
@@ -58,11 +60,13 @@ function modifyGame(gameList) {
     .split("\n")
     .filter((line) => line); //https://stackoverflow.com/a/59897290
 
-  console.log(formData.get("gameImg"));
+  const img = formData.get("gameImg");
 
   const fileReader = new FileReader();
 
-  fileReader.readAsDataURL(formData.get("gameImg"));
+  if (img) {
+    fileReader.readAsDataURL(img);
+  }
 
   fileReader.addEventListener("load", function () {
     const url = fileReader.result;
@@ -73,14 +77,12 @@ function modifyGame(gameList) {
       description: formData.get("description"),
       price: parseInt(formData.get("price")),
       categories: lines,
-      img: url,
+      img: url ? url : gameBefore.img,
     };
 
-    gameList.push(game);
+    gameList.splice(indexOf(gameBefore), 1, game);
 
     localStorage.setItem("gameList", JSON.stringify(gameList));
-
-    console.log(gameList);
   });
 }
 
@@ -94,16 +96,18 @@ document.addEventListener("DOMContentLoaded", function () {
     addNewGame(gameList);
   });
 
-  crudFormModify.addEventListener("submit", function () {});
+  crudFormModify.addEventListener("submit", function (event) {
+    event.preventDefault();
+    modifyGame(gameList);
+  });
 
   crudFormDelete.addEventListener("submit", function () {});
 
+  //arreglar esto
   gameIdModify.addEventListener("change", function () {
     const game = gameList.find(
       (game) => game.id === parseInt(gameIdModify.value),
     );
-
-    console.log(game);
 
     const title = document.querySelector("#titlePut");
     title.value = game.title;
