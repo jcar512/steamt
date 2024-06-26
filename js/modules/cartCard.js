@@ -68,7 +68,7 @@ export class CartCard extends Card {
     /* --- Icono para el boton eliminar --- */
     const deleteIcon = document.createElement("img");
     deleteCartItem.appendChild(deleteIcon);
-    deleteIcon.src = "images/icons/trash-2.svg";
+    deleteIcon.src = "../images/icons/trash-2.svg";
     deleteIcon.alt = "deleteIcon";
   }
 }

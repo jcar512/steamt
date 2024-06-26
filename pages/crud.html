@@ -25,14 +25,14 @@
             <li><a class="font-bold" href="#">Categorias</a></li>
           </ul>
         </div>
-        <div class="flex mx-6 space-x-4">
+        <div class="flex mx-6 space-x-4 items-center">
           <input
             id="searchInput"
             class="px-2 bg-sky-800 text-slate-300 placeholder:text-slate-800 border-2 rounded border-slate-500"
             type="text"
             placeholder="Buscar"
           />
-          <a href="#"
+          <a href="#" id="cartBtn"
             ><img src="../images/icons/shopping-cart.svg" alt="cart-img"
           /></a>
           <button>
@@ -40,6 +40,43 @@
           </button>
         </div>
       </nav>
+
+      <div
+        id="cartModal"
+        class="hidden backdrop-blur-sm bg-white/30 fixed top-0 left-0 z-10 w-full h-full"
+      >
+        <div id="cart" class="flex mx-auto mt-32 mb-auto w-3/4 h-3/4">
+          <div
+            id="cartCardContainer"
+            class="overflow-auto space-y-4 pr-3 w-4/6 mr-8"
+          >
+            <!-- CartCards -->
+          </div>
+          <div id="cartPriceContainer" class="w-2/6">
+            <div class="bg-slate-900 rounded-md p-4">
+              <div class="flex justify-between mb-20">
+                <p>Total estimado:</p>
+                <div>
+                  <p id="cartTotalPrice" class="text-xl font-bold"></p>
+                  <p
+                    id="cartTotalPriceWithDiscount"
+                    class="hidden text-xl font-bold"
+                  ></p>
+                </div>
+              </div>
+              <div>
+                <button
+                  class="w-full font-bold bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500"
+                  id="confirmPurchaseButton"
+                  type="button"
+                >
+                  Finalizar compra
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main class="w-4/5 mx-auto mt-32">
@@ -116,27 +153,36 @@
               id="gameIdModify"
             />
             <p class="text-xl font-bold">Imagen</p>
-            <input class="w-60" type="file" name="gameImgPut" id="gameImgPut" />
+            <input
+              disabled
+              class="disabledInput w-60"
+              type="file"
+              name="gameImgPut"
+              id="gameImgPut"
+            />
             <p class="text-xl font-bold">Título</p>
             <input
+              disabled
               required
-              class="text-black"
+              class="disabledInput text-black"
               type="text"
               name="titlePut"
               id="titlePut"
             />
             <p class="text-xl font-bold">Descripción</p>
             <textarea
+              disabled
               required
-              class="text-black w-5/6 h-96 p-2"
+              class="disabledInput text-black w-5/6 h-96 p-2"
               name="descriptionPut"
               id="descriptionPut"
               maxlength="342"
             ></textarea>
             <p class="text-xl font-bold">Precio</p>
             <input
+              disabled
               required
-              class="text-black"
+              class="disabledInput text-black"
               type="number"
               min="0"
               name="pricePut"
@@ -144,15 +190,18 @@
             />
             <p class="text-xl font-bold">Categorías</p>
             <textarea
+              disabled
               required
-              class="text-black w-5/6 h-36 p-2"
+              class="disabledInput text-black w-5/6 h-36 p-2"
               name="categoriesPut"
               id="categoriesPut"
               maxlength="298"
             ></textarea>
             <button
+              id="confirmModify"
+              disabled
               type="submit"
-              class="w-full font-bold bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500"
+              class="disabledInput w-full font-bold bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500 disabled:bg-slate-900"
             >
               Confirmar
             </button>
@@ -175,8 +224,10 @@
               id="gameIdDelete"
             />
             <button
+              id="confirmDelete"
+              disabled
               type="submit"
-              class="w-full font-bold bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500"
+              class="w-full font-bold bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500 disabled:bg-slate-900"
             >
               Confirmar
             </button>
