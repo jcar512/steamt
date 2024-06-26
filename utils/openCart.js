@@ -16,5 +16,11 @@ export function openCart() {
 
   cartTotalPrice.innerText = `UYU ${totalPriceSum(cartItems)}`;
 
-  cartModal.style.display = "block";
+  if (cartModal.classList.contains("opacity-0")) {
+    cartModal.classList.replace("opacity-0", "opacity-100");
+    cartModal.classList.replace("invisible", "visible");
+  } else {
+    cartModal.classList.replace("opacity-100", "opacity-0");
+    cartModal.classList.replace("visible", "invisible");
+  }
 }

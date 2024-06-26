@@ -88,7 +88,6 @@ export class Card {
       const itemAlreadyInCart = cartItems.find((item) => item.id === game.id);
 
       if (itemAlreadyInCart) {
-        console.log("already in cart");
         const alertModal = new Alert(
           "El juego ya se encuenta en el carrito",
           "secondary",
@@ -125,13 +124,20 @@ export class Card {
     this.cardContainer.appendChild(modal);
     modal.id = `modal${this.id}`;
     modal.classList =
-      "hidden backdrop-opacity-20 backdrop-invert fixed top-0 left-0 z-10 w-full h-full";
+      "invisible opacity-0 ease-in-out  transition-all duration-500 backdrop-opacity-20 backdrop-invert fixed top-0 left-0 z-10 w-full h-full";
 
     /*----Mostrar modal----*/
     infoButton.addEventListener("click", function () {
       /*  Hago que se muestre el modal al hacer click en cada infoButton cambiando
-      el display de none a flex  */
-      modal.style.display = "flex";
+      la visibilidad  */
+
+      if (modal.classList.contains("opacity-0")) {
+        modal.classList.replace("opacity-0", "opacity-100");
+        modal.classList.replace("invisible", "visible");
+      } else {
+        modal.classList.replace("opacity-100", "opacity-0");
+        modal.classList.replace("visible", "invisible");
+      }
     });
 
     /*----Card del modal----*/

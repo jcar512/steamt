@@ -82,8 +82,6 @@ export function modifyGame(gameList, form) {
       gameBefore.img,
     );
 
-    console.log(game);
-
     gameList.splice(gameList.indexOf(gameBefore), 1, game);
 
     localStorage.setItem("gameList", JSON.stringify(gameList));

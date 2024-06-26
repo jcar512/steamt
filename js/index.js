@@ -1,6 +1,7 @@
 import { loadCards } from "../utils/loadCards.js";
 import { searchByName } from "../utils/searchByName.js";
 import { loadLocalStorage } from "../utils/loadLocalStorage.js";
+import { createCart } from "../utils/createCart.js";
 import { openCart } from "../utils/openCart.js";
 import { closeModal } from "../utils/closeModal.js";
 
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameList = JSON.parse(localStorage.getItem("gameList"));
 
   loadCards(gameList, cardContainer, Card);
+
+  createCart();
 
   cartBtn.addEventListener("click", function () {
     openCart();

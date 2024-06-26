@@ -2,6 +2,7 @@ import { loadLocalStorage } from "../utils/loadLocalStorage.js";
 import { addNewGame } from "../utils/addNewGame.js";
 import { updateForm, modifyGame } from "../utils/modifyGame.js";
 import { enableDeleteButton, deleteGame } from "../utils/deleteGame.js";
+import { createCart } from "../utils/createCart.js";
 import { openCart } from "../utils/openCart.js";
 import { closeModal } from "../utils/closeModal.js";
 
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
   loadLocalStorage();
 
   const gameList = JSON.parse(localStorage.getItem("gameList"));
+
+  createCart();
 
   cartBtn.addEventListener("click", function () {
     openCart();
