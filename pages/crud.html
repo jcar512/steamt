@@ -38,6 +38,12 @@
           <button id="userButton">
             <img src="../images/icons/user.svg" alt="user-img" />
           </button>
+          <div class="relative">
+            <div
+              id="usersContainer"
+              class="invisible opacity-0 absolute ease-in-out transition-all duration-500 top-10 right-0 w-64 bg-slate-900 border-2 border-slate-700 rounded flex flex-col"
+            ></div>
+          </div>
         </div>
       </nav>
     </header>
@@ -139,8 +145,11 @@
             id="crudFormModify"
             class="flex flex-col space-y-4 lg:w-4/5 2xl:w-full mx-auto items-center p-4 border-2 border-slate-800 rounded-md shadow-2xl"
           >
-            <label for="modifySelect" class="text-xl font-bold">Id</label>
-            <select class="text-black" name="modifySelect" id="modifySelect">
+            <select
+              class="text-black mt-6"
+              name="modifySelect"
+              id="modifySelect"
+            >
               <option value="default">-- Seleccionar juego --</option>
             </select>
 
@@ -214,8 +223,11 @@
             id="crudFormDelete"
             class="flex flex-col space-y-4 lg:w-4/5 2xl:w-full mx-auto items-center p-4 border-2 border-slate-800 rounded-md shadow-2xl"
           >
-            <label for="deleteSelect" class="text-xl font-bold">Id</label>
-            <select class="text-black" name="deleteSelect" id="deleteSelect">
+            <select
+              class="text-black mt-6"
+              name="deleteSelect"
+              id="deleteSelect"
+            >
               <option value="default">-- Seleccionar juego --</option>
             </select>
 

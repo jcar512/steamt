@@ -8,7 +8,7 @@ export function openCart() {
   const cartTotalPrice = document.querySelector("#cartTotalPrice");
   const cartModal = document.querySelector("#cartModal");
 
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const cartItems = JSON.parse(localStorage.getItem("currentUser")).cart;
 
   cartCardContainer.replaceChildren();
 

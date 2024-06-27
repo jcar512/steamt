@@ -1,15 +1,24 @@
 import { createCart } from "../utils/createCart.js";
 import { openCart } from "../utils/openCart.js";
 import { closeModal } from "../utils/closeModal.js";
+import { loadLocalStorage } from "../utils/loadLocalStorage.js";
 
-import { createUserList } from "../utils/createUserList.js";
+import { loadUsers, showUsers, setDefaultUser } from "../utils/handleUsers.js";
 
 const cartBtn = document.querySelector("#cartBtn");
 
 document.addEventListener("DOMContentLoaded", function () {
-  createUserList();
+  loadLocalStorage();
+
+  const gameList = JSON.parse(localStorage.getItem("gameList"));
+
+  loadUsers();
+
+  setDefaultUser();
 
   createCart();
+
+  showUsers();
 
   cartBtn.addEventListener("click", function () {
     openCart();

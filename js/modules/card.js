@@ -1,3 +1,5 @@
+import { setUser } from "../../utils/handleUsers.js";
+
 import { Alert } from "./alert.js";
 
 export class Card {
@@ -83,7 +85,9 @@ export class Card {
 
       const game = gameList.find((game) => this.id === `addGame${game.id}`);
 
-      const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+
+      const cartItems = user.cart;
 
       const itemAlreadyInCart = cartItems.find((item) => item.id === game.id);
 
@@ -95,8 +99,8 @@ export class Card {
         alertModal.setAlertBgColor();
         alertModal.removeAlert();
       } else {
-        cartItems.push(game);
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        user.cart.push(game);
+        setUser(user);
 
         const alertModal = new Alert(
           "El juego ha sido agregado al carrito",

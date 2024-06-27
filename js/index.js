@@ -4,6 +4,7 @@ import { loadLocalStorage } from "../utils/loadLocalStorage.js";
 import { createCart } from "../utils/createCart.js";
 import { openCart } from "../utils/openCart.js";
 import { closeModal } from "../utils/closeModal.js";
+import { loadUsers, showUsers, setDefaultUser } from "../utils/handleUsers.js";
 
 import { Card } from "./modules/card.js";
 
@@ -18,7 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loadCards(gameList, cardContainer, Card);
 
+  loadUsers();
+
+  setDefaultUser();
+
   createCart();
+
+  showUsers();
 
   cartBtn.addEventListener("click", function () {
     openCart();

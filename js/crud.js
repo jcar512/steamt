@@ -6,6 +6,7 @@ import { loadLocalStorage } from "../utils/loadLocalStorage.js";
 import { modifyGame, updateForm } from "../utils/modifyGame.js";
 import { openCart } from "../utils/openCart.js";
 import { updateSelectDropdown } from "../utils/updateSelectDropdown.js";
+import { loadUsers, showUsers, setDefaultUser } from "../utils/handleUsers.js";
 
 const cartBtn = document.querySelector("#cartBtn");
 const crudFormAdd = document.querySelector("#crudFormAdd");
@@ -19,7 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const gameList = JSON.parse(localStorage.getItem("gameList"));
 
+  loadUsers();
+
+  setDefaultUser();
+
   createCart();
+
+  showUsers();
 
   cartBtn.addEventListener("click", function () {
     openCart();
