@@ -1,4 +1,5 @@
 import { totalPriceSum } from "../../utils/totalPriceSum.js";
+import { setUser } from "../../utils/handleUsers.js";
 
 import { Card } from "./card.js";
 
@@ -52,13 +53,19 @@ export class CartCard extends Card {
     deleteCartItem.addEventListener("click", function () {
       const cartTotalPrice = document.querySelector("#cartTotalPrice");
 
-      const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+
+      const cartItems = user.cart;
+
+      const game = cartItems.find((game) => game.id === parseInt(this.value));
 
       const newList = cartItems.filter(
+        //Uso la id que le asigno a la card para comparar con la lista de juegos
         (game) => game.id !== parseInt(this.value),
       );
 
-      localStorage.setItem("cartItems", JSON.stringify(newList));
+      user.cart.splice(cartItems.indexOf(game), 1);
+      setUser(user);
 
       cartTotalPrice.innerText = `UYU ${totalPriceSum(newList)}`;
 
