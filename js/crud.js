@@ -1,17 +1,18 @@
-import { loadLocalStorage } from "../utils/loadLocalStorage.js";
 import { addNewGame } from "../utils/addNewGame.js";
-import { updateForm, modifyGame } from "../utils/modifyGame.js";
-import { enableDeleteButton, deleteGame } from "../utils/deleteGame.js";
-import { createCart } from "../utils/createCart.js";
-import { openCart } from "../utils/openCart.js";
 import { closeModal } from "../utils/closeModal.js";
+import { createCart } from "../utils/createCart.js";
+import { deleteGame, enableDeleteButton } from "../utils/deleteGame.js";
+import { loadLocalStorage } from "../utils/loadLocalStorage.js";
+import { modifyGame, updateForm } from "../utils/modifyGame.js";
+import { openCart } from "../utils/openCart.js";
+import { updateSelectDropdown } from "../utils/updateSelectDropdown.js";
 
 const cartBtn = document.querySelector("#cartBtn");
 const crudFormAdd = document.querySelector("#crudFormAdd");
 const crudFormModify = document.querySelector("#crudFormModify");
 const crudFormDelete = document.querySelector("#crudFormDelete");
-const gameIdModify = document.querySelector("#gameIdModify");
-const gameIdDelete = document.querySelector("#gameIdDelete");
+const modifySelect = document.querySelector("#modifySelect");
+const deleteSelect = document.querySelector("#deleteSelect");
 
 document.addEventListener("DOMContentLoaded", function () {
   loadLocalStorage();
@@ -23,6 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
   cartBtn.addEventListener("click", function () {
     openCart();
   });
+
+  updateSelectDropdown(gameList, modifySelect);
+
+  updateSelectDropdown(gameList, deleteSelect);
 
   crudFormAdd.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -36,14 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   crudFormDelete.addEventListener("submit", function (event) {
     event.preventDefault();
-    deleteGame(gameList, gameIdDelete);
+    deleteGame(gameList, deleteSelect);
   });
 
-  gameIdDelete.addEventListener("change", function () {
-    enableDeleteButton(gameList, gameIdDelete);
+  deleteSelect.addEventListener("change", function () {
+    enableDeleteButton(gameList, deleteSelect);
   });
 
-  gameIdModify.addEventListener("change", function () {
+  modifySelect.addEventListener("change", function () {
     updateForm(gameList);
   });
 

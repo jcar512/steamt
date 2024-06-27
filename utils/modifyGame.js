@@ -1,11 +1,12 @@
+import { confirmModal } from "./confirmModal.js";
+
+import { Alert } from "../js/modules/alert.js";
 import { Game } from "../js/modules/game.js";
 
 export function updateForm(gameList) {
-  const gameIdModify = document.querySelector("#gameIdModify");
+  const gameId = document.querySelector("#modifySelect").value;
 
-  const game = gameList.find(
-    (game) => game.id === parseInt(gameIdModify.value),
-  );
+  const game = gameList.find((game) => game.id === parseInt(gameId));
 
   const inputs = document.querySelectorAll(".disabledInput");
 
@@ -37,8 +38,10 @@ export function updateForm(gameList) {
 }
 
 export function modifyGame(gameList, form) {
+  const gameSelected = document.querySelector("#modifySelect");
+
   const gameBefore = gameList.find(
-    (game) => game.id === parseInt(gameIdModify.value),
+    (game) => game.id === parseInt(gameSelected.value),
   );
 
   const formData = new FormData(form);
@@ -51,39 +54,67 @@ export function modifyGame(gameList, form) {
 
   const img = formData.get("gameImg");
 
-  if (img) {
-    const fileReader = new FileReader();
+  confirmModal(`Seguro que desea modificar ${formData.get("titlePut")}`).then(
+    (confirmed) => {
+      if (confirmed) {
+        if (img) {
+          const fileReader = new FileReader();
 
-    fileReader.readAsDataURL(img);
+          fileReader.readAsDataURL(img);
 
-    fileReader.addEventListener("load", function () {
-      const imgURL = fileReader.result;
+          fileReader.addEventListener("load", function () {
+            const imgURL = fileReader.result;
 
-      const game = new Game(
-        parseInt(gameIdModify.value),
-        formData.get("titlePut"),
-        formData.get("descriptionPut"),
-        parseInt(formData.get("pricePut")),
-        lines,
-        imgURL,
-      );
+            const game = new Game(
+              gameBefore.id,
+              formData.get("titlePut"),
+              formData.get("descriptionPut"),
+              parseInt(formData.get("pricePut")),
+              lines,
+              imgURL,
+            );
 
-      gameList.splice(indexOf(gameBefore), 1, game);
+            gameList.splice(indexOf(gameBefore), 1, game);
 
-      localStorage.setItem("gameList", JSON.stringify(gameList));
-    });
-  } else {
-    const game = new Game(
-      parseInt(gameIdModify.value),
-      formData.get("titlePut"),
-      formData.get("descriptionPut"),
-      parseInt(formData.get("pricePut")),
-      lines,
-      gameBefore.img,
-    );
+            localStorage.setItem("gameList", JSON.stringify(gameList));
 
-    gameList.splice(gameList.indexOf(gameBefore), 1, game);
+            gameSelected.value = "default";
+            updateForm(gameList);
 
-    localStorage.setItem("gameList", JSON.stringify(gameList));
-  }
+            const alert = new Alert(
+              `${game.title}
+            ha sido modificado!`,
+              "primary",
+            );
+            alert.setAlertBgColor();
+            alert.removeAlert();
+          });
+        } else {
+          const game = new Game(
+            gameBefore.id,
+            formData.get("titlePut"),
+            formData.get("descriptionPut"),
+            parseInt(formData.get("pricePut")),
+            lines,
+            gameBefore.img,
+          );
+
+          gameList.splice(gameList.indexOf(gameBefore), 1, game);
+
+          localStorage.setItem("gameList", JSON.stringify(gameList));
+
+          gameSelected.value = "default";
+          updateForm(gameList);
+
+          const alert = new Alert(
+            `${game.title}
+          ha sido modificado!`,
+            "primary",
+          );
+          alert.setAlertBgColor();
+          alert.removeAlert();
+        }
+      }
+    },
+  );
 }

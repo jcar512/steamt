@@ -1,3 +1,6 @@
+import { confirmModal } from "./confirmModal.js";
+
+import { Alert } from "../js/modules/alert.js";
 import { Game } from "../js/modules/game.js";
 
 export function addNewGame(gameList, form) {
@@ -20,24 +23,53 @@ export function addNewGame(gameList, form) {
 
   const img = formData.get("gameImg");
 
-  const fileReader = new FileReader();
+  confirmModal(`Seguro que desea añadir ${formData.get("title")}`).then(
+    (confirmed) => {
+      if (confirmed) {
+        const fileReader = new FileReader();
 
-  fileReader.readAsDataURL(img);
+        fileReader.readAsDataURL(img);
 
-  fileReader.addEventListener("load", function () {
-    const imgURL = fileReader.result;
+        fileReader.addEventListener("load", function () {
+          const imgURL = fileReader.result;
 
-    const game = new Game(
-      gameId,
-      formData.get("title"),
-      formData.get("description"),
-      parseInt(formData.get("price")),
-      lines,
-      imgURL,
-    );
+          const game = new Game(
+            gameId,
+            formData.get("title"),
+            formData.get("description"),
+            parseInt(formData.get("price")),
+            lines,
+            imgURL,
+          );
 
-    gameList.push(game);
+          gameList.push(game);
 
-    localStorage.setItem("gameList", JSON.stringify(gameList));
-  });
+          const gameImg = document.querySelector("#gameImg");
+          gameImg.value = "";
+
+          const title = document.querySelector("#title");
+          title.value = "";
+
+          const description = document.querySelector("#description");
+          description.value = "";
+
+          const price = document.querySelector("#price");
+          price.value = "";
+
+          const categories = document.querySelector("#categories");
+          categories.value = "";
+
+          localStorage.setItem("gameList", JSON.stringify(gameList));
+
+          const alert = new Alert(
+            `${game.title} 
+            ha sido añadido!`,
+            "primary",
+          );
+          alert.setAlertBgColor();
+          alert.removeAlert();
+        });
+      }
+    },
+  );
 }

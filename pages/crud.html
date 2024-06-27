@@ -35,7 +35,7 @@
           <a href="#" id="cartBtn"
             ><img src="../images/icons/shopping-cart.svg" alt="cart-img"
           /></a>
-          <button>
+          <button id="userButton">
             <img src="../images/icons/user.svg" alt="user-img" />
           </button>
         </div>
@@ -43,14 +43,41 @@
     </header>
 
     <main class="w-4/5 mx-auto mt-32">
-      <div class="grid grid-cols-3">
+      <div
+        id="confirmModal"
+        class="invisible opacity-0 ease-in-out transition-all duration-300 backdrop-opacity-20 backdrop-invert fixed top-0 left-0 z-10 w-full h-full"
+      >
+        <div
+          class="flex flex-col justify-between mx-auto mt-40 mb-auto h-60 w-96 border-2 border-slate-800 rounded-md shadow-2xl bg-slate-900"
+        >
+          <div class="pt-6 px-8">
+            <p id="confirmModalText" class="text-center"></p>
+          </div>
+          <div class="flex justify-between px-8 pb-5">
+            <button
+              id="confirmButton"
+              class="bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500"
+            >
+              Confirmar
+            </button>
+            <button
+              id="cancelButton"
+              class="bg-red-900 hover:bg-red-700 rounded p-2 ease-in-out duration-500"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid 2xl:grid-cols-3 space-x-4">
         <div class="py-8">
           <h3 class="text-center mb-8 text-2xl font-bold">Añadir</h3>
           <form
             id="crudFormAdd"
-            class="flex flex-col space-y-4 w-4/6 mx-auto items-center p-4 border-2 border-slate-800 rounded-md shadow-2xl"
+            class="flex flex-col space-y-4 lg:w-4/5 2xl:w-full mx-auto items-center p-4 border-2 border-slate-800 rounded-md shadow-2xl"
           >
-            <p class="text-xl font-bold">Imagen</p>
+            <label for="gameImg" class="text-xl font-bold">Imagen</label>
             <input
               required
               class="w-60"
@@ -58,15 +85,19 @@
               name="gameImg"
               id="gameImg"
             />
-            <p class="text-xl font-bold">Título</p>
+
+            <label for="title" class="text-xl font-bold">Título</label>
             <input
               required
-              class="text-black"
+              class="text-black w-4/5"
               type="text"
               name="title"
               id="title"
             />
-            <p class="text-xl font-bold">Descripción</p>
+
+            <label for="description" class="text-xl font-bold"
+              >Descripción</label
+            >
             <textarea
               required
               class="text-black w-5/6 h-96 p-2"
@@ -74,7 +105,8 @@
               id="description"
               maxlength="342"
             ></textarea>
-            <p class="text-xl font-bold">Precio</p>
+
+            <label for="price" class="text-xl font-bold">Precio</label>
             <input
               required
               class="text-black"
@@ -83,7 +115,8 @@
               name="price"
               id="price"
             />
-            <p class="text-xl font-bold">Categorías</p>
+
+            <label for="categories" class="text-xl font-bold">Categorías</label>
             <textarea
               required
               class="text-black w-5/6 h-36 p-2"
@@ -104,18 +137,14 @@
           <h3 class="text-center mb-8 text-2xl font-bold">Modificar</h3>
           <form
             id="crudFormModify"
-            class="flex flex-col space-y-4 w-4/6 mx-auto items-center p-4 border-2 border-slate-800 rounded-md shadow-2xl"
+            class="flex flex-col space-y-4 lg:w-4/5 2xl:w-full mx-auto items-center p-4 border-2 border-slate-800 rounded-md shadow-2xl"
           >
-            <p class="text-xl font-bold">Id</p>
-            <input
-              required
-              class="text-black"
-              type="number"
-              min="1"
-              name="gameIdModify"
-              id="gameIdModify"
-            />
-            <p class="text-xl font-bold">Imagen</p>
+            <label for="modifySelect" class="text-xl font-bold">Id</label>
+            <select class="text-black" name="modifySelect" id="modifySelect">
+              <option value="default">-- Seleccionar juego --</option>
+            </select>
+
+            <label for="gameImgPut" class="text-xl font-bold">Imagen</label>
             <input
               disabled
               class="disabledInput w-60"
@@ -123,16 +152,20 @@
               name="gameImgPut"
               id="gameImgPut"
             />
-            <p class="text-xl font-bold">Título</p>
+
+            <label for="titlePut" class="text-xl font-bold">Título</label>
             <input
               disabled
               required
-              class="disabledInput text-black"
+              class="disabledInput text-black w-4/5"
               type="text"
               name="titlePut"
               id="titlePut"
             />
-            <p class="text-xl font-bold">Descripción</p>
+
+            <label for="descriptionPut" class="text-xl font-bold"
+              >Descripción</label
+            >
             <textarea
               disabled
               required
@@ -141,7 +174,8 @@
               id="descriptionPut"
               maxlength="342"
             ></textarea>
-            <p class="text-xl font-bold">Precio</p>
+
+            <label for="pricePut" class="text-xl font-bold">Precio</label>
             <input
               disabled
               required
@@ -151,7 +185,10 @@
               name="pricePut"
               id="pricePut"
             />
-            <p class="text-xl font-bold">Categorías</p>
+
+            <label for="categoriesPut" class="text-xl font-bold"
+              >Categorías</label
+            >
             <textarea
               disabled
               required
@@ -175,17 +212,13 @@
           <h3 class="text-center mb-8 text-2xl font-bold">Eliminar</h3>
           <form
             id="crudFormDelete"
-            class="flex flex-col space-y-4 w-4/6 mx-auto items-center p-4 border-2 border-slate-800 rounded-md shadow-2xl"
+            class="flex flex-col space-y-4 lg:w-4/5 2xl:w-full mx-auto items-center p-4 border-2 border-slate-800 rounded-md shadow-2xl"
           >
-            <p class="text-xl font-bold">Id</p>
-            <input
-              required
-              class="text-black"
-              type="number"
-              min="1"
-              name="gameIdDelete"
-              id="gameIdDelete"
-            />
+            <label for="deleteSelect" class="text-xl font-bold">Id</label>
+            <select class="text-black" name="deleteSelect" id="deleteSelect">
+              <option value="default">-- Seleccionar juego --</option>
+            </select>
+
             <button
               id="confirmDelete"
               disabled
