@@ -8,7 +8,8 @@ export class Alert {
 
     this.alertModal = document.createElement("div");
     document.querySelector("main").appendChild(this.alertModal);
-    this.alertModal.classList = "fixed flex rounded py-2 top-32 right-32 h-14";
+    this.alertModal.classList =
+      "fixed flex rounded py-2 top-32 right-32 h-14 z-50";
 
     this.content = document.createElement("p");
     this.alertModal.appendChild(this.content);

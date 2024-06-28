@@ -15,7 +15,7 @@ export function loadCards(list, cardContainer, className) {
       description,
       price,
       categories,
-      img,
+      img
     );
 
     if (className === Card) {

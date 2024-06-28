@@ -1,5 +1,5 @@
-import { totalPriceSum } from "../../utils/totalPriceSum.js";
 import { setUser } from "../../utils/handleUsers.js";
+import { totalSum } from "../../utils/handlePricing.js";
 
 import { Card } from "./card.js";
 
@@ -67,7 +67,7 @@ export class CartCard extends Card {
       user.cart.splice(cartItems.indexOf(game), 1);
       setUser(user);
 
-      cartTotalPrice.innerText = `UYU ${totalPriceSum(newList)}`;
+      cartTotalPrice.innerText = `UYU ${totalSum(newList)}`;
 
       card.remove();
     });

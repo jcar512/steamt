@@ -10,7 +10,7 @@ export const defaultGameList = [
     marca su camino para convertirse en el Caballero Oscuro.",
     599,
     ["Acción", "Aventura"],
-    "../images/game_cover/batman-arkham-origins.jpg",
+    "../images/game_cover/batman-arkham-origins.jpg"
   ),
   new Game(
     2,
@@ -21,7 +21,7 @@ export const defaultGameList = [
     de personalización.",
     1499,
     ["Acción", "Rol", "Multijugador Cooperativo"],
-    "../images/game_cover/borderlands3.jpg",
+    "../images/game_cover/borderlands3.jpg"
   ),
   new Game(
     3,
@@ -32,8 +32,8 @@ export const defaultGameList = [
     ver qué tan lejos puedes llegar antes de caer rodando todo el camino de vuelta \
     por la montaña.",
     455,
-    ["Action", "Adventure", "Casual", "Indie"],
-    "../images/game_cover/bread&fred.jpg",
+    ["Acción", "Aventura", "Casual", "Indie"],
+    "../images/game_cover/bread&fred.jpg"
   ),
   new Game(
     4,
@@ -42,7 +42,7 @@ export const defaultGameList = [
     por jugadores!",
     606,
     ["Estrategia"],
-    "../images/game_cover/civilization.jpg",
+    "../images/game_cover/civilization.jpg"
   ),
   new Game(
     5,
@@ -54,7 +54,7 @@ export const defaultGameList = [
     procedimentalmente en esta experiencia roguelite.",
     369,
     ["Casual", "Indie", "Simuladores", "Estrategia"],
-    "../images/game_cover/coffee-caravan.jpg",
+    "../images/game_cover/coffee-caravan.jpg"
   ),
   new Game(
     6,
@@ -65,7 +65,7 @@ export const defaultGameList = [
     descubrir los secretos del misterioso Blue Hole.",
     595,
     ["Aventura", "Casual", "Rol", "Simuladores"],
-    "../images/game_cover/dave-the-diver.jpg",
+    "../images/game_cover/dave-the-diver.jpg"
   ),
   new Game(
     7,
@@ -77,7 +77,7 @@ export const defaultGameList = [
     parece.",
     310,
     ["Aventura", "Casual", "Indie"],
-    "../images/game_cover/duck-detective.jpg",
+    "../images/game_cover/duck-detective.jpg"
   ),
   new Game(
     8,
@@ -88,7 +88,7 @@ export const defaultGameList = [
     máximo.",
     595,
     ["Indie", "Simuladores"],
-    "../images/game_cover/euro-truck-simulator.jpg",
+    "../images/game_cover/euro-truck-simulator.jpg"
   ),
   new Game(
     9,
@@ -98,7 +98,7 @@ export const defaultGameList = [
     el paraíso para quienes los tienen y una pesadilla viviente para quienes no.",
     759,
     ["Acción", "Aventura"],
-    "../images/game_cover/grand-theft-auto-iv.jpg",
+    "../images/game_cover/grand-theft-auto-iv.jpg"
   ),
   new Game(
     10,
@@ -108,7 +108,7 @@ export const defaultGameList = [
     Époque.",
     1800,
     ["Acción", "Aventura", "Rol"],
-    "../images/game_cover/lies-of-p.jpg",
+    "../images/game_cover/lies-of-p.jpg"
   ),
   new Game(
     11,
@@ -120,7 +120,7 @@ export const defaultGameList = [
     emocionante trama argumental.",
     1049,
     ["Acción"],
-    "../images/game_cover/metro-exodus.jpg",
+    "../images/game_cover/metro-exodus.jpg"
   ),
   new Game(
     12,
@@ -131,7 +131,7 @@ export const defaultGameList = [
     cartas para completar tu formación como alquimista.",
     595,
     ["Aventura", "Indie", "Rol"],
-    "../images/game_cover/moonstone-island.jpg",
+    "../images/game_cover/moonstone-island.jpg"
   ),
   new Game(
     13,
@@ -142,7 +142,7 @@ export const defaultGameList = [
     jugabilidad única.",
     310,
     ["Acción"],
-    "../images/game_cover/portal.jpg",
+    "../images/game_cover/portal.jpg"
   ),
   new Game(
     14,
@@ -151,7 +151,7 @@ export const defaultGameList = [
     donde la planificación y ejecución superiores triunfan.",
     849,
     ["Acción", "Multijugador"],
-    "../images/game_cover/rainbow-siege.jpg",
+    "../images/game_cover/rainbow-siege.jpg"
   ),
   new Game(
     15,
@@ -161,7 +161,7 @@ export const defaultGameList = [
     desactivar situaciones hostiles y confrontativas.",
     999,
     ["Acción", "Aventura", "Indie"],
-    "../images/game_cover/ready-or-not.jpg",
+    "../images/game_cover/ready-or-not.jpg"
   ),
   new Game(
     16,
@@ -172,7 +172,7 @@ export const defaultGameList = [
     funciones completamente nuevas.",
     1199,
     ["Rol"],
-    "../images/game_cover/skyrim.jpg",
+    "../images/game_cover/skyrim.jpg"
   ),
   new Game(
     17,
@@ -184,7 +184,7 @@ export const defaultGameList = [
     años, la batalla ha sido librada.",
     999,
     ["Acción", "Aventura", "Rol"],
-    "../images/game_cover/south-park-the-stick-of-truth.jpg",
+    "../images/game_cover/south-park-the-stick-of-truth.jpg"
   ),
   new Game(
     18,
@@ -194,7 +194,7 @@ export const defaultGameList = [
     camino a casa. ",
     799,
     ["Aventura", "Indie"],
-    "../images/game_cover/stray.jpg",
+    "../images/game_cover/stray.jpg"
   ),
   new Game(
     19,
@@ -212,7 +212,7 @@ export const defaultGameList = [
       "Acceso anticipado",
       "Multijugador Cooperativo",
     ],
-    "../images/game_cover/valhheim-ashlands.jpg",
+    "../images/game_cover/valhheim-ashlands.jpg"
   ),
   new Game(
     20,
@@ -223,6 +223,6 @@ export const defaultGameList = [
     eSports para mantenerte al borde de tu asiento durante todo el año.",
     619,
     ["Carreras", "Multijugador"],
-    "../images/game_cover/wrc7.jpg",
+    "../images/game_cover/wrc7.jpg"
   ),
 ];

@@ -1,9 +1,9 @@
-import { createCart } from "../utils/createCart.js";
-import { openCart } from "../utils/openCart.js";
 import { closeModal } from "../utils/closeModal.js";
+import { createCart } from "../utils/createCart.js";
 import { loadLocalStorage } from "../utils/loadLocalStorage.js";
+import { openCart } from "../utils/openCart.js";
 
-import { loadUsers, showUsers, setDefaultUser } from "../utils/handleUsers.js";
+import { loadUsers, setDefaultUser, showUsers } from "../utils/handleUsers.js";
 
 const cartBtn = document.querySelector("#cartBtn");
 

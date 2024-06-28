@@ -2,11 +2,11 @@ import { addNewGame } from "../utils/addNewGame.js";
 import { closeModal } from "../utils/closeModal.js";
 import { createCart } from "../utils/createCart.js";
 import { deleteGame, enableDeleteButton } from "../utils/deleteGame.js";
+import { loadUsers, setDefaultUser, showUsers } from "../utils/handleUsers.js";
 import { loadLocalStorage } from "../utils/loadLocalStorage.js";
 import { modifyGame, updateForm } from "../utils/modifyGame.js";
 import { openCart } from "../utils/openCart.js";
 import { updateSelectDropdown } from "../utils/updateSelectDropdown.js";
-import { loadUsers, showUsers, setDefaultUser } from "../utils/handleUsers.js";
 
 const cartBtn = document.querySelector("#cartBtn");
 const crudFormAdd = document.querySelector("#crudFormAdd");

@@ -8,7 +8,7 @@ export function loadUsers() {
     localStorage.setItem("users", JSON.stringify(userList));
   }
 
-  const container = document.querySelector("#usersContainer");
+  const usersContainer = document.querySelector("#usersContainer");
 
   userList.forEach((user) => {
     const button = document.createElement("button");
@@ -16,8 +16,6 @@ export function loadUsers() {
     button.innerText = `${user.username}`;
 
     button.addEventListener("click", function () {
-      const usersContainer = document.querySelector("#usersContainer");
-
       //Necesito actualizar la informacion para que no pase datos anteriores
       userList = JSON.parse(localStorage.getItem("users"));
       const currentUser = userList.find((element) => element.id === user.id);
@@ -28,7 +26,7 @@ export function loadUsers() {
       usersContainer.classList.replace("opacity-100", "opacity-0");
     });
 
-    container.appendChild(button);
+    usersContainer.appendChild(button);
   });
 }
 
@@ -57,9 +55,9 @@ export function showUsers() {
 export function setUser(user) {
   const users = JSON.parse(localStorage.getItem("users"));
 
-  const currentUser = users.find((element) => element.id === user.id);
+  const currentUser = users.find((currentUser) => currentUser.id === user.id);
 
-  if (currentUser) users.splice(users.indexOf(currentUser), 1, user);
+  if (currentUser) users.splice(users.indexOf(currentUser), 1, user); //Esto es para actualizar el carrito de cada uno
 
   localStorage.setItem("users", JSON.stringify(users));
   localStorage.setItem("currentUser", JSON.stringify(user));

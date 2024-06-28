@@ -19,7 +19,7 @@ export function addNewGame(gameList, form) {
   const lines = area
     .replace(/\r\n/g, "\n")
     .split("\n")
-    .filter((line) => line); //https://stackoverflow.com/a/59897290
+    .filter((line) => line);
 
   const img = formData.get("gameImg");
 

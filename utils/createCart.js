@@ -42,7 +42,8 @@ export function createCart() {
 
   const totalPriceWithDiscount = document.createElement("p");
   totalPriceWithDiscount.id = "cartTotalPriceWithDiscount";
-  totalPriceWithDiscount.classList = "hidden text-xl font-bold";
+  totalPriceWithDiscount.classList = "invisible text-xl font-bold";
+  totalPriceContainer.appendChild(totalPriceWithDiscount);
 
   const buttonContainer = document.createElement("div");
   div.appendChild(buttonContainer);
@@ -52,4 +53,9 @@ export function createCart() {
   button.classList =
     "w-full font-bold bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500";
   button.innerText = "Finalizar compra";
+  buttonContainer.appendChild(button);
+
+  button.addEventListener("click", function () {
+    console.log("finzalizar compra");
+  });
 }

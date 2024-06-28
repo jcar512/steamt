@@ -1,16 +1,23 @@
-import { loadCards } from "../utils/loadCards.js";
-import { searchByName } from "../utils/searchByName.js";
-import { loadLocalStorage } from "../utils/loadLocalStorage.js";
-import { createCart } from "../utils/createCart.js";
-import { openCart } from "../utils/openCart.js";
 import { closeModal } from "../utils/closeModal.js";
-import { loadUsers, showUsers, setDefaultUser } from "../utils/handleUsers.js";
+import { createCart } from "../utils/createCart.js";
+import {
+  clearCategories,
+  loadCategories,
+  searchByName,
+  showCategoriesContainer,
+} from "../utils/handleCategories.js";
+import { loadUsers, setDefaultUser, showUsers } from "../utils/handleUsers.js";
+import { loadCards } from "../utils/loadCards.js";
+import { loadLocalStorage } from "../utils/loadLocalStorage.js";
+import { openCart } from "../utils/openCart.js";
 
 import { Card } from "./modules/card.js";
 
 const cardContainer = document.querySelector("#cardContainer");
-const searchInput = document.querySelector("#searchInput");
 const cartBtn = document.querySelector("#cartBtn");
+const categoriesButton = document.querySelector("#categoriesButton");
+const categoriesContainer = document.querySelector("#categories");
+const searchInput = document.querySelector("#searchInput");
 
 document.addEventListener("DOMContentLoaded", function () {
   loadLocalStorage();
@@ -27,6 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   showUsers();
 
+  showCategoriesContainer(categoriesButton, categoriesContainer);
+
+  loadCategories(gameList, categoriesContainer);
+
+  clearCategories(gameList, cardContainer);
+
   cartBtn.addEventListener("click", function () {
     openCart();
   });
@@ -36,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   searchInput.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") searchByName(searchInput.value);
+    if (event.key === "Enter")
+      searchByName(searchInput.value, gameList, cardContainer);
   });
 });
