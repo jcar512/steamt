@@ -1,7 +1,7 @@
 import { users } from "./users.js";
 
 export function loadUsers() {
-  let userList = JSON.parse(localStorage.getItem("users")) || [];
+  let userList = JSON.parse(localStorage.getItem("users"));
 
   if (!userList) {
     userList = users;
