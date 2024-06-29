@@ -8,13 +8,12 @@ import {
 } from "../utils/handleUsers.js";
 import { loadLocalStorage } from "../utils/loadLocalStorage.js";
 import { openCart } from "../utils/openCart.js";
+import { listSales, totalRevenue } from "../utils/handleStatistics.js";
 
 const cartBtn = document.querySelector("#cartBtn");
 
 document.addEventListener("DOMContentLoaded", function () {
   loadLocalStorage();
-
-  const gameList = JSON.parse(localStorage.getItem("gameList"));
 
   loadUsers();
 
@@ -25,6 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
   createCart();
 
   showUsers();
+
+  listSales();
+
+  totalRevenue();
 
   cartBtn.addEventListener("click", function () {
     openCart();

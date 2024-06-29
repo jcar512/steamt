@@ -1,5 +1,6 @@
 import { confirmModal } from "./confirmModal.js";
 import { setUser } from "./handleUsers.js";
+import { listSales, totalRevenue } from "./handleStatistics.js";
 
 import { Alert } from "../js/modules/alert.js";
 import { Sale } from "../js/modules/sale.js";
@@ -8,6 +9,11 @@ export function confirmSale() {
   confirmModal("¿Seguro que desea finalizar la compra?").then((confirmed) => {
     if (confirmed) {
       completeSale();
+
+      if (window.location.pathname === "/pages/estadisticas.html") {
+        listSales();
+        totalRevenue();
+      }
 
       const alert = new Alert("¡Compra exitosa!", "primary");
       alert.setAlertBgColor();

@@ -43,23 +43,44 @@
     </header>
 
     <main class="w-4/5 mx-auto mt-32">
+      <div
+        id="confirmModal"
+        class="invisible opacity-0 ease-in-out transition-all duration-300 backdrop-opacity-20 backdrop-invert fixed top-0 left-0 z-50 w-full h-full"
+      >
+        <div
+          class="flex flex-col justify-between mx-auto mt-40 mb-auto h-60 w-96 border-2 border-slate-800 rounded-md shadow-2xl bg-slate-900"
+        >
+          <div class="pt-6 px-8">
+            <p id="confirmModalText" class="text-center"></p>
+          </div>
+          <div class="flex justify-between px-8 pb-5">
+            <button
+              id="confirmButton"
+              class="bg-green-900 hover:bg-green-700 rounded p-2 ease-in-out duration-500"
+            >
+              Confirmar
+            </button>
+            <button
+              id="cancelButton"
+              class="bg-red-900 hover:bg-red-700 rounded p-2 ease-in-out duration-500"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+
       <section class="bg-slate-900 shadow-xl rounded-md p-4 mb-10">
         <h1 class="text-2xl mb-5 font-bold">Ventas por juego:</h1>
         <div>
-          <ol id="salesContainer">
-            <li class="flex space-x-4">
-              <p>Juego: Batman</p>
-              <p>Ventas: 22</p>
-              <p>Dinero recaudado: UYU 2222</p>
-            </li>
-          </ol>
+          <ol id="salesContainer"></ol>
         </div>
       </section>
 
       <section class="bg-slate-900 shadow-xl rounded-md p-4">
         <h1 class="text-2xl mb-5 font-bold">Total de dinero recaudado:</h1>
 
-        <p id="salesTotal" class="text-3xl">UYU 22222</p>
+        <p id="totalRevenue" class="text-3xl">No hay ventas registradas</p>
       </section>
     </main>
 

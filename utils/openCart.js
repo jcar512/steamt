@@ -9,7 +9,6 @@ export function openCart() {
   const cartCardContainer = document.querySelector("#cartCardContainer");
   const cartModal = document.querySelector("#cartModal");
 
-  const categoriesContainer = document.querySelector("#categories");
   const usersContainer = document.querySelector("#usersContainer");
 
   const gameList = JSON.parse(localStorage.getItem("gameList"));
@@ -21,7 +20,7 @@ export function openCart() {
   //Chequeo que los juegos sigan disponibles
   const cartItems = gameList.filter((game) => {
     return userCartItems.find(
-      (userGame) => userGame.id === game.id && userGame.title === game.title,
+      (userGame) => userGame.id === game.id && userGame.title === game.title
     );
   });
 
@@ -45,8 +44,12 @@ export function openCart() {
       usersContainer.classList.replace("visible", "invisible");
       usersContainer.classList.replace("opacity-100", "opacity-0");
 
-      categoriesContainer.classList.replace("visible", "invisible");
-      categoriesContainer.classList.replace("opacity-100", "opacity-0");
+      if (window.location.pathname === "/index.html") {
+        const categoriesContainer = document.querySelector("#categories");
+
+        categoriesContainer.classList.replace("opacity-100", "opacity-0");
+        categoriesContainer.classList.replace("visible", "invisible");
+      }
     } else {
       cartModal.classList.replace("opacity-100", "opacity-0");
       cartModal.classList.replace("visible", "invisible");
