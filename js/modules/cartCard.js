@@ -59,10 +59,18 @@ export class CartCard extends Card {
 
       const newList = cartItems.filter(
         //Uso la id que le asigno a la card para comparar con la lista de juegos
-        (game) => game.id !== parseInt(this.value),
+        (game) => game.id !== parseInt(this.value)
       );
 
       user.cart.splice(cartItems.indexOf(game), 1);
+
+      if (user.cart.length === 0) {
+        const cartModal = document.querySelector("#cartModal");
+
+        cartModal.classList.replace("opacity-100", "opacity-0");
+        cartModal.classList.replace("visible", "invisible");
+      }
+
       setUser(user);
 
       setCartPrice(newList);

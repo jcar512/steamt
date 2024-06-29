@@ -1,3 +1,5 @@
+import { confirmSale } from "./handleSale.js";
+
 export function createCart() {
   const cartModal = document.createElement("div");
   cartModal.id = "cartModal";
@@ -56,6 +58,6 @@ export function createCart() {
   buttonContainer.appendChild(button);
 
   button.addEventListener("click", function () {
-    console.log("finzalizar compra");
+    confirmSale();
   });
 }
