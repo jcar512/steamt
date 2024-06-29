@@ -54,7 +54,7 @@ export function modifyGame(gameList, form) {
 
   const img = formData.get("gameImg");
 
-  confirmModal(`Seguro que desea modificar ${formData.get("titlePut")}`).then(
+  confirmModal(`Seguro que desea modificar ${formData.get("titlePut")}?`).then(
     (confirmed) => {
       if (confirmed) {
         if (img) {

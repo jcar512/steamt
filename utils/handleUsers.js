@@ -54,21 +54,30 @@ export function showUsers() {
 
 export function setUser(user) {
   const users = JSON.parse(localStorage.getItem("users"));
+  const userName = document.querySelector("#userName");
 
   const currentUser = users.find((currentUser) => currentUser.id === user.id);
 
   if (currentUser) users.splice(users.indexOf(currentUser), 1, user); //Esto es para actualizar el carrito de cada uno
 
+  userName.innerText = `${user.username}`;
   localStorage.setItem("users", JSON.stringify(users));
   localStorage.setItem("currentUser", JSON.stringify(user));
 }
 
 export function setDefaultUser() {
-  const currentUser = localStorage.getItem("currentUser");
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   if (!currentUser) {
     const userList = JSON.parse(localStorage.getItem("users"));
 
     localStorage.setItem("currentUser", JSON.stringify(userList[0]));
   }
+}
+
+export function loadUserName() {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const userName = document.querySelector("#userName");
+
+  userName.innerText = `${currentUser.username}`;
 }

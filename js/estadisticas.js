@@ -1,9 +1,13 @@
 import { closeModal } from "../utils/closeModal.js";
 import { createCart } from "../utils/createCart.js";
+import {
+  loadUserName,
+  loadUsers,
+  setDefaultUser,
+  showUsers,
+} from "../utils/handleUsers.js";
 import { loadLocalStorage } from "../utils/loadLocalStorage.js";
 import { openCart } from "../utils/openCart.js";
-
-import { loadUsers, setDefaultUser, showUsers } from "../utils/handleUsers.js";
 
 const cartBtn = document.querySelector("#cartBtn");
 
@@ -15,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
   loadUsers();
 
   setDefaultUser();
+
+  loadUserName();
 
   createCart();
 

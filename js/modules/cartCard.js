@@ -1,5 +1,5 @@
 import { setUser } from "../../utils/handleUsers.js";
-import { totalSum } from "../../utils/handlePricing.js";
+import { setCartPrice } from "../../utils/handlePricing.js";
 
 import { Card } from "./card.js";
 
@@ -51,8 +51,6 @@ export class CartCard extends Card {
     deleteCartItem.type = "button";
 
     deleteCartItem.addEventListener("click", function () {
-      const cartTotalPrice = document.querySelector("#cartTotalPrice");
-
       const user = JSON.parse(localStorage.getItem("currentUser"));
 
       const cartItems = user.cart;
@@ -67,7 +65,7 @@ export class CartCard extends Card {
       user.cart.splice(cartItems.indexOf(game), 1);
       setUser(user);
 
-      cartTotalPrice.innerText = `UYU ${totalSum(newList)}`;
+      setCartPrice(newList);
 
       card.remove();
     });

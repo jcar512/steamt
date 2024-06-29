@@ -6,7 +6,12 @@ import {
   searchByName,
   showCategoriesContainer,
 } from "../utils/handleCategories.js";
-import { loadUsers, setDefaultUser, showUsers } from "../utils/handleUsers.js";
+import {
+  loadUserName,
+  loadUsers,
+  setDefaultUser,
+  showUsers,
+} from "../utils/handleUsers.js";
 import { loadCards } from "../utils/loadCards.js";
 import { loadLocalStorage } from "../utils/loadLocalStorage.js";
 import { openCart } from "../utils/openCart.js";
@@ -29,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
   loadUsers();
 
   setDefaultUser();
+
+  loadUserName();
 
   createCart();
 

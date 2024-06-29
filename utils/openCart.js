@@ -1,7 +1,6 @@
 import { setUser } from "./handleUsers.js";
 import { loadCards } from "./loadCards.js";
-import { totalSum } from "./handlePricing.js";
-import { totalSumWithDiscount } from "./handlePricing.js";
+import { setCartPrice } from "./handlePricing.js";
 
 import { Alert } from "../js/modules/alert.js";
 import { CartCard } from "../js/modules/cartCard.js";
@@ -9,10 +8,7 @@ import { CartCard } from "../js/modules/cartCard.js";
 export function openCart() {
   const cartCardContainer = document.querySelector("#cartCardContainer");
   const cartModal = document.querySelector("#cartModal");
-  const cartTotalPrice = document.querySelector("#cartTotalPrice");
-  const cartTotalPriceWithDiscount = document.querySelector(
-    "#cartTotalPriceWithDiscount",
-  );
+
   const categoriesContainer = document.querySelector("#categories");
   const usersContainer = document.querySelector("#usersContainer");
 
@@ -40,16 +36,7 @@ export function openCart() {
 
     loadCards(cartItems, cartCardContainer, CartCard);
 
-    if (cartItems.length > 3) {
-      cartTotalPrice.classList.add("line-through");
-      cartTotalPrice.innerText = `UYU ${totalSum(cartItems)}`;
-      cartTotalPriceWithDiscount.classList.replace("invisible", "visible");
-      cartTotalPriceWithDiscount.innerText = `UYU ${totalSumWithDiscount(cartItems)}`;
-    } else {
-      cartTotalPriceWithDiscount.classList.replace("visible", "invisible");
-      cartTotalPrice.classList.remove("line-through");
-      cartTotalPrice.innerText = `UYU ${totalSum(cartItems)}`;
-    }
+    setCartPrice(cartItems);
 
     if (cartModal.classList.contains("opacity-0")) {
       cartModal.classList.replace("opacity-0", "opacity-100");
