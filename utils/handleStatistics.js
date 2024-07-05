@@ -34,16 +34,19 @@ export function listSales() {
       const p = document.createElement("p");
       li.appendChild(p);
       p.classList = "border-r text-center";
+      /* Titulo de la venta */
       p.innerText = sale.title;
 
       const p2 = document.createElement("p");
       li.appendChild(p2);
       p2.classList = "border-r text-center";
+      /* Cantidad de la venta */
       p2.innerText = sale.quantity;
 
       const p3 = document.createElement("p");
       li.appendChild(p3);
       p3.classList = "text-center";
+      /* Recaudado de la venta */
       p3.innerText = `UYU ${sale.revenue}`;
     });
   }
@@ -59,6 +62,7 @@ export function totalRevenue() {
       return previous + current.revenue;
     }, 0);
 
+    /* Total de la venta */
     totalRevenue.innerText = `UYU ${totalRevenueSum}`;
   }
 }

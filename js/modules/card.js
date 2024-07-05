@@ -40,7 +40,7 @@ export class Card {
     card.appendChild(infoContainer);
     infoContainer.classList = "flex flex-col justify-between p-2";
 
-    /* --- Titulo --- */
+    /* --- Titulo card--- */
     const gameTitle = document.createElement("h3");
     infoContainer.appendChild(gameTitle);
     gameTitle.classList = "text-2xl xl:h-16 lg:h-24 h-16 mb-2";
@@ -51,7 +51,7 @@ export class Card {
     infoContainer.appendChild(priceContainer);
     priceContainer.classList = "flex justify-between items-center";
 
-    /* --- Precio del juego --- */
+    /* --- Precio del juego card--- */
     const gamePrice = document.createElement("p");
     priceContainer.appendChild(gamePrice);
     gamePrice.innerText = `UYU ${this.price}`;
@@ -161,16 +161,18 @@ export class Card {
     modalCard.appendChild(descriptionContainer);
     descriptionContainer.classList = "p-8";
 
-    /*----Descripcion----*/
+    /*---- Descripcion card ----*/
     const gameDescription = document.createElement("p");
     descriptionContainer.appendChild(gameDescription);
     gameDescription.classList = "text-lg";
     gameDescription.innerText = this.description;
 
-    /*----Categorias----*/
+    /*---- Categorias card ----*/
     const gameCategories = document.createElement("p");
     descriptionContainer.appendChild(gameCategories);
     gameCategories.classList = "text-lg font-bold mt-5";
+    //Usar " this.categories.join(', ') " para convertir el array de categorias
+    //a un string
     gameCategories.innerText = `Género: ${this.categories.join(", ")}`;
   }
 }

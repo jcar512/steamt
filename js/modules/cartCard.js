@@ -24,18 +24,18 @@ export class CartCard extends Card {
     gameImage.alt = `${this.title}-image`;
     gameImage.classList = "max-h-36 rounded-md";
 
-    /* --- Titulo --- */
+    /* --- Titulo cartCard --- */
     const title = document.createElement("h3");
     leftContainer.appendChild(title);
     title.classList = "text-xl";
-    title.innerHTML = this.title;
+    title.innerText = this.title;
 
     /* --- Div para precio y boton de eliminar --- */
     const rightContainer = document.createElement("div");
     card.appendChild(rightContainer);
     rightContainer.classList = "flex flex-col place-self-end";
 
-    /* --- Precio del juego --- */
+    /* --- Precio del juego cartCard --- */
     const gamePrice = document.createElement("p");
     rightContainer.appendChild(gamePrice);
     gamePrice.classList = "text-lg min-w-24";
