@@ -41,7 +41,7 @@ export function modifyGame(gameList, form) {
   const gameSelected = document.querySelector("#modifySelect");
 
   const gameBefore = gameList.find(
-    (game) => game.id === parseInt(gameSelected.value),
+    (game) => game.id === parseInt(gameSelected.value)
   );
 
   const formData = new FormData(form);
@@ -54,6 +54,7 @@ export function modifyGame(gameList, form) {
 
   const img = formData.get("gameImg");
 
+  /* ---------------------------------------------------------------------------------------------- */
   confirmModal(`Seguro que desea modificar ${formData.get("titlePut")}?`).then(
     (confirmed) => {
       if (confirmed) {
@@ -71,7 +72,7 @@ export function modifyGame(gameList, form) {
               formData.get("descriptionPut"),
               parseInt(formData.get("pricePut")),
               lines,
-              imgURL,
+              imgURL
             );
 
             gameList.splice(indexOf(gameBefore), 1, game);
@@ -84,7 +85,7 @@ export function modifyGame(gameList, form) {
             const alert = new Alert(
               `${game.title}
             ha sido modificado!`,
-              "primary",
+              "primary"
             );
             alert.setAlertBgColor();
             alert.removeAlert();
@@ -96,7 +97,7 @@ export function modifyGame(gameList, form) {
             formData.get("descriptionPut"),
             parseInt(formData.get("pricePut")),
             lines,
-            gameBefore.img,
+            gameBefore.img
           );
 
           gameList.splice(gameList.indexOf(gameBefore), 1, game);
@@ -109,12 +110,13 @@ export function modifyGame(gameList, form) {
           const alert = new Alert(
             `${game.title}
           ha sido modificado!`,
-            "primary",
+            "primary"
           );
           alert.setAlertBgColor();
           alert.removeAlert();
         }
       }
-    },
+    }
   );
+  /* ---------------------------------------------------------------------------------------------- */
 }

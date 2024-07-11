@@ -6,6 +6,7 @@ import { Alert } from "../js/modules/alert.js";
 import { Sale } from "../js/modules/sale.js";
 
 export function confirmSale() {
+  /* ------------------------------------------------------------------------ */
   confirmModal("¿Seguro que desea finalizar la compra?").then((confirmed) => {
     if (confirmed) {
       completeSale();
@@ -20,6 +21,7 @@ export function confirmSale() {
       alert.removeAlert();
     }
   });
+  /* ------------------------------------------------------------------------ */
 }
 
 export function completeSale() {

@@ -23,6 +23,8 @@ export function addNewGame(gameList, form) {
 
   const img = formData.get("gameImg");
 
+  /* ---------------------------------------------------------------------------------------------- */
+
   confirmModal(`Seguro que desea añadir ${formData.get("title")}`).then(
     (confirmed) => {
       if (confirmed) {
@@ -35,11 +37,11 @@ export function addNewGame(gameList, form) {
 
           const game = new Game(
             gameId,
-            formData.get("title"),
-            formData.get("description"),
-            parseInt(formData.get("price")),
+            formData.get("title"), //Titulo del juego
+            formData.get("description"), //Descripcion del juego
+            parseInt(formData.get("price")), //Precio del juego
             lines,
-            imgURL,
+            imgURL
           );
 
           gameList.push(game);
@@ -64,12 +66,14 @@ export function addNewGame(gameList, form) {
           const alert = new Alert(
             `${game.title} 
             ha sido añadido!`,
-            "primary",
+            "primary"
           );
           alert.setAlertBgColor();
           alert.removeAlert();
         });
       }
-    },
+    }
   );
+
+  /* ---------------------------------------------------------------------------------------------- */
 }

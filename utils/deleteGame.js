@@ -20,6 +20,7 @@ export function deleteGame(gameList, formSelect) {
 
   const confirmDelete = document.querySelector("#confirmDelete");
 
+  /* ---------------------------------------------------------------------------------------------- */
   confirmModal(`Seguro que desea eliminar ${game.title}?`).then((confirmed) => {
     if (confirmed) {
       gameList.splice(gameList.indexOf(game), 1);
@@ -42,10 +43,11 @@ export function deleteGame(gameList, formSelect) {
       const alert = new Alert(
         `${game.title} 
         ha sido eliminado!`,
-        "secondary",
+        "secondary"
       );
       alert.setAlertBgColor();
       alert.removeAlert();
     }
   });
+  /* ---------------------------------------------------------------------------------------------- */
 }
